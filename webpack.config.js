@@ -11,6 +11,15 @@ const config = {
     filename: '[name].[hash:8].js',
     chunkFilename: '[name].[chunkhash:8].js',
   },
+  module: {
+    rules: [
+      {
+        test: /\.m?js/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/index.html'),
