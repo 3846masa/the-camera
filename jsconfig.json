@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    // Detect unused variables
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    // Use dom, esnext types
+    "lib": ["dom", "esnext"],
+
+    // Enable JSX
+    "jsx": "preserve",
+
+    // Aliases
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
