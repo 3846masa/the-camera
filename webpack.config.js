@@ -11,6 +11,11 @@ const config = {
     filename: '[name].[hash:8].js',
     chunkFilename: '[name].[chunkhash:8].js',
   },
+  resolve: {
+    alias: {
+      '~': path.resolve(__dirname, './src'),
+    },
+  },
   module: {
     rules: [
       {
