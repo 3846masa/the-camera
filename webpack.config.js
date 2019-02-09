@@ -49,6 +49,10 @@ const config = {
     }),
     new CleanWebpackPlugin(),
   ],
+  devServer: {
+    host: '0.0.0.0',
+    allowedHosts: ['.local'],
+  },
 };
 
 module.exports = config;
