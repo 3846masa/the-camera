@@ -1,8 +1,28 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 
-import styles from './App.css';
+import CameraPage from '~/components/camera/CameraPage';
 
-const App = () => <h1 className={styles.base}>Hello World!</h1>;
+/**
+ * @typedef State
+ * @property {'camera'} page
+ */
+
+/** @extends {React.Component<{}, State>} */
+class App extends React.Component {
+  /** @type {State} */
+  state = {
+    page: 'camera',
+  };
+
+  render() {
+    const { page } = this.state;
+    switch (page) {
+      case 'camera': {
+        return <CameraPage />;
+      }
+    }
+  }
+}
 
 export default hot(App);
