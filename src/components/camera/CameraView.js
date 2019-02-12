@@ -1,8 +1,22 @@
 import React from 'react';
 import styles from './CameraView.css';
 
-const SAMPLE_IMAGE_SRC = 'https://picsum.photos/1080/1920/?image=15';
+import Video from '~/components/common/Video';
 
-const CameraView = () => <img src={SAMPLE_IMAGE_SRC} className={styles.base} />;
+/**
+ * @typedef Props
+ * @property {MediaStream} [srcObject]
+ */
+
+/** @extends {React.FC<Props>} */
+const CameraView = ({ srcObject }) => (
+  <Video
+    muted
+    autoPlay
+    playsInline
+    srcObject={srcObject}
+    className={styles.base}
+  />
+);
 
 export default CameraView;
