@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.4",
+    "file-saver": "^2.0.0",
     "react": "^16.8.1",
     "react-devtools-core": "^3.6.0",
     "react-dom": "^16.8.1"
