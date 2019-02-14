@@ -38,6 +38,10 @@ const config = {
           'postcss-loader',
         ],
       },
+      {
+        test: /\.mp3$/,
+        use: ['file-loader'],
+      },
     ],
   },
   plugins: [

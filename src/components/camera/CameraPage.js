@@ -7,6 +7,7 @@ import CameraController from '~/components/camera/CameraController';
 import captureImage from '~/helpers/captureImage';
 import getConstraints from '~/helpers/getConstraints';
 import getZoomRange from '~/helpers/getZoomRange';
+import SHUTTER_EFFECT_PATH from '~/assets/shutter-effect.mp3';
 
 /**
  * @typedef State
@@ -27,6 +28,8 @@ class CameraPage extends React.Component {
     constraints: {},
     facingMode: null,
   };
+
+  shutterEffectRef = React.createRef();
 
   get canToggleFacingMode() {
     const { constraints } = this.state;
@@ -80,6 +83,9 @@ class CameraPage extends React.Component {
   }
 
   onClickShutter = async () => {
+    this.shutterEffectRef.current.currentTime = 0;
+    this.shutterEffectRef.current.play();
+
     const { stream, facingMode } = this.state;
     const blob = await captureImage(stream, facingMode);
     saveAs(blob, `${Date.now()}.jpg`);
@@ -120,6 +126,11 @@ class CameraPage extends React.Component {
           onClickShutter={this.onClickShutter}
           onToggleFacingMode={this.onToggleFacingMode}
           disabledToggleFacingMode={!this.canToggleFacingMode}
+        />
+        <audio
+          preload="auto"
+          src={SHUTTER_EFFECT_PATH}
+          ref={this.shutterEffectRef}
         />
       </Layout>
     );
