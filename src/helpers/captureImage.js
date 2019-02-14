@@ -1,5 +1,6 @@
 import createVideoElement from '~/helpers/createVideoElement';
 import createImageBlob from '~/helpers/createImageBlob';
+import EXIF from '~/helpers/EXIF';
 
 /**
  * @param {MediaStream} stream
@@ -8,8 +9,14 @@ import createImageBlob from '~/helpers/createImageBlob';
 async function captureImage(stream, facingMode) {
   const video = await createVideoElement(stream);
   const blob = await createImageBlob(video, facingMode);
+
+  const exif = new EXIF({
+    width: video.videoWidth,
+    height: video.videoHeight,
+  });
+
   video.remove();
-  return blob;
+  return exif.insertTo(blob);
 }
 
 export default captureImage;
