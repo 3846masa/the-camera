@@ -4,7 +4,7 @@
   bottom: 0;
   left: 0;
   display: grid;
-  grid-template-areas: '..... ..... shutter-button ..... .....';
+  grid-template-areas: '..... facing-mode-button shutter-button ..... .....';
   grid-template-columns: repeat(5, minmax(0, 1fr));
   grid-column-gap: 10px;
   justify-content: space-around;
@@ -33,5 +33,27 @@
     display: block;
     padding-top: 100%;
     content: '';
+  }
+}
+
+.facing-mode-button {
+  display: flex;
+  grid-area: facing-mode-button;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  & > .button-icon {
+    width: 30%;
+    height: auto;
+  }
+
+  &:active,
+  &:disabled {
+    color: gray;
   }
 }
