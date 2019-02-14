@@ -6,9 +6,12 @@ import CameraView from '~/components/camera/CameraView';
 import CameraController from '~/components/camera/CameraController';
 import captureImage from '~/helpers/captureImage';
 import getConstraints from '~/helpers/getConstraints';
+import getZoomRange from '~/helpers/getZoomRange';
 
 /**
  * @typedef State
+ * @property {number} zoom
+ * @property {*} zoomRange
  * @property {MediaStream} stream
  * @property {Record<string, MediaTrackConstraints | null>} constraints
  * @property {'user' | 'environment'} facingMode
@@ -18,6 +21,8 @@ import getConstraints from '~/helpers/getConstraints';
 class CameraPage extends React.Component {
   /** @type {State} */
   state = {
+    zoom: 1,
+    zoomRange: null,
     stream: null,
     constraints: {},
     facingMode: null,
@@ -59,7 +64,8 @@ class CameraPage extends React.Component {
     const stream = await navigator.mediaDevices.getUserMedia({
       video: constraints[facingMode],
     });
-    this.setState({ stream });
+    const zoomRange = await getZoomRange(stream);
+    this.setState({ stream, zoomRange, zoom: 1 });
   }
 
   closeStream() {
@@ -89,13 +95,28 @@ class CameraPage extends React.Component {
     }
   };
 
+  /** @param {React.ChangeEvent<HTMLInputElement>} ev */
+  onChangeZoom = async (ev) => {
+    const zoom = ev.target.value;
+    this.setState({ zoom });
+
+    const { stream } = this.state;
+    const [track] = stream.getVideoTracks();
+    await track.applyConstraints({
+      advanced: [{ zoom }],
+    });
+  };
+
   render() {
-    const { stream, facingMode } = this.state;
+    const { stream, facingMode, zoom, zoomRange } = this.state;
 
     return (
       <Layout>
         <CameraView srcObject={stream} facingMode={facingMode} />
         <CameraController
+          zoom={zoom}
+          zoomRange={zoomRange}
+          onChangeZoom={this.onChangeZoom}
           onClickShutter={this.onClickShutter}
           onToggleFacingMode={this.onToggleFacingMode}
           disabledToggleFacingMode={!this.canToggleFacingMode}
