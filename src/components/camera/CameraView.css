@@ -6,4 +6,8 @@
   height: 100%;
   object-fit: contain;
   object-position: center center;
+
+  &[data-facing-mode='user'] {
+    transform: scaleX(-1);
+  }
 }

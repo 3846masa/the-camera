@@ -1,9 +1,10 @@
 /**
  * @param {CanvasImageSource} source
+ * @param {'user' | 'environment'} facingMode
  * @param {string} [mimetype]
  * @returns {Promise<Blob>}
  */
-async function createImageBlob(source, mimetype = 'image/jpeg') {
+async function createImageBlob(source, facingMode, mimetype = 'image/jpeg') {
   const canvas = document.createElement('canvas');
 
   if (source instanceof HTMLVideoElement) {
@@ -24,7 +25,16 @@ async function createImageBlob(source, mimetype = 'image/jpeg') {
   }
 
   const ctx = canvas.getContext('2d');
-  ctx.drawImage(source, 0, 0);
+
+  if (facingMode === 'user') {
+    ctx.save();
+    ctx.translate(canvas.width, 0);
+    ctx.scale(-1, 1);
+    ctx.drawImage(source, 0, 0);
+    ctx.restore();
+  } else {
+    ctx.drawImage(source, 0, 0);
+  }
 
   const blob = await new Promise((resolve) => canvas.toBlob(resolve, mimetype));
   return blob;

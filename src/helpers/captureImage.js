@@ -1,10 +1,13 @@
 import createVideoElement from '~/helpers/createVideoElement';
 import createImageBlob from '~/helpers/createImageBlob';
 
-/** @param {MediaStream} stream */
-async function captureImage(stream) {
+/**
+ * @param {MediaStream} stream
+ * @param {'user' | 'environment'} facingMode
+ */
+async function captureImage(stream, facingMode) {
   const video = await createVideoElement(stream);
-  const blob = await createImageBlob(video);
+  const blob = await createImageBlob(video, facingMode);
   video.remove();
   return blob;
 }

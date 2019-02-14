@@ -23,6 +23,11 @@ class CameraPage extends React.Component {
     facingMode: null,
   };
 
+  get canToggleFacingMode() {
+    const { constraints } = this.state;
+    return constraints.user && constraints.environment;
+  }
+
   componentDidMount() {
     this.initialize();
   }
@@ -57,18 +62,44 @@ class CameraPage extends React.Component {
     this.setState({ stream });
   }
 
-  onClickShutter = async () => {
+  closeStream() {
     const { stream } = this.state;
-    const blob = await captureImage(stream);
+    if (!stream) {
+      return false;
+    }
+
+    for (const track of stream.getTracks()) {
+      track.stop();
+    }
+  }
+
+  onClickShutter = async () => {
+    const { stream, facingMode } = this.state;
+    const blob = await captureImage(stream, facingMode);
     saveAs(blob, `${Date.now()}.jpg`);
   };
 
+  onToggleFacingMode = () => {
+    if (this.canToggleFacingMode) {
+      this.closeStream();
+      this.setState(({ facingMode: current }) => ({
+        stream: null,
+        facingMode: current === 'user' ? 'environment' : 'user',
+      }));
+    }
+  };
+
   render() {
-    const { stream } = this.state;
+    const { stream, facingMode } = this.state;
+
     return (
       <Layout>
-        <CameraView srcObject={stream} />
-        <CameraController onClickShutter={this.onClickShutter} />
+        <CameraView srcObject={stream} facingMode={facingMode} />
+        <CameraController
+          onClickShutter={this.onClickShutter}
+          onToggleFacingMode={this.onToggleFacingMode}
+          disabledToggleFacingMode={!this.canToggleFacingMode}
+        />
       </Layout>
     );
   }
