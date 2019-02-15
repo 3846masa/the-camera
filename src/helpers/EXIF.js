@@ -12,6 +12,7 @@ class EXIF {
    * @property {number} height
    * @property {number} [longitude]
    * @property {number} [latitude]
+   * @property {number} [orientation]
    */
 
   /**
@@ -34,6 +35,7 @@ class EXIF {
         [piexif.ImageIFD.ResolutionUnit]: 2,
         [piexif.ImageIFD.YCbCrPositioning]: 1,
         [piexif.ImageIFD.DateTime]: dateTimeString,
+        [piexif.ImageIFD.Orientation]: options.orientation,
       },
       Exif: {
         [piexif.ExifIFD.ExifVersion]: '0230',

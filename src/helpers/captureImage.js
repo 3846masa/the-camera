@@ -1,6 +1,7 @@
 import createVideoElement from '~/helpers/createVideoElement';
 import createImageBlob from '~/helpers/createImageBlob';
 import getGeolocation from '~/helpers/getGeolocation';
+import getOrientation from '~/helpers/getOrientation';
 import EXIF from '~/helpers/EXIF';
 
 /**
@@ -17,6 +18,7 @@ async function captureImage(stream, facingMode) {
     height: video.videoHeight,
     latitude: geolocation.coords.latitude,
     longitude: geolocation.coords.longitude,
+    orientation: getOrientation(facingMode),
   });
 
   video.remove();
