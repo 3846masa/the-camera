@@ -39,6 +39,7 @@
     "core-js": "^2.6.4",
     "dayjs": "^1.8.6",
     "file-saver": "^2.0.0",
+    "motion-sensors-polyfill": "^0.3.1",
     "piexifjs": "^1.0.4",
     "react": "^16.8.1",
     "react-devtools-core": "^3.6.0",

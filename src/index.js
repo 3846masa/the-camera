@@ -1,3 +1,4 @@
+import '~/polyfills';
 import '~/development';
 import React from 'react';
 import ReactDOM from 'react-dom';
