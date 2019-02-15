@@ -7,6 +7,7 @@ import CameraController from '~/components/camera/CameraController';
 import captureImage from '~/helpers/captureImage';
 import getConstraints from '~/helpers/getConstraints';
 import getZoomRange from '~/helpers/getZoomRange';
+import getGeolocation from '~/helpers/getGeolocation';
 import SHUTTER_EFFECT_PATH from '~/assets/shutter-effect.mp3';
 
 /**
@@ -48,6 +49,9 @@ class CameraPage extends React.Component {
   }
 
   async initialize() {
+    // Get geolocation for preventing alert
+    await getGeolocation();
+
     const constraints = {
       user: await getConstraints('user'),
       environment: await getConstraints('environment'),

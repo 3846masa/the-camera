@@ -3,11 +3,15 @@ import dayjs from 'dayjs';
 
 import BinaryStringUtils from '~/helpers/BinaryStringUtils';
 
+const { degToDmsRational } = piexif.GPSHelper;
+
 class EXIF {
   /**
    * @typedef EXIFOptions
    * @property {number} width
    * @property {number} height
+   * @property {number} [longitude]
+   * @property {number} [latitude]
    */
 
   /**
@@ -42,6 +46,30 @@ class EXIF {
         [piexif.ExifIFD.PixelYDimension]: options.height,
       },
     };
+
+    if (options.latitude != null && options.longitude != null) {
+      const utc = now.subtract(now.utcOffset(), 'minutes');
+
+      Object.assign(exifObj, {
+        GPS: {
+          [piexif.GPSIFD.GPSVersionID]: [2, 3, 0, 0],
+          [piexif.GPSIFD.GPSLatitudeRef]: options.latitude > 0 ? 'N' : 'S',
+          [piexif.GPSIFD.GPSLatitude]: degToDmsRational(
+            Math.abs(options.latitude),
+          ),
+          [piexif.GPSIFD.GPSLongitudeRef]: options.longitude > 0 ? 'E' : 'W',
+          [piexif.GPSIFD.GPSLongitude]: degToDmsRational(
+            Math.abs(options.longitude),
+          ),
+          [piexif.GPSIFD.GPSTimeStamp]: [
+            [utc.hour(), 1],
+            [utc.minute(), 1],
+            [utc.second() * 1000 + utc.millisecond(), 1000],
+          ],
+          [piexif.GPSIFD.GPSDateStamp]: utc.format('YYYY:MM:DD'),
+        },
+      });
+    }
 
     return exifObj;
   }
