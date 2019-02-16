@@ -18,14 +18,15 @@
 }
 
 .shutter-button {
-  position: relative;
   grid-area: shutter-button;
+}
+
+.shutter-icon {
+  width: 100%;
   background-color: black;
   border: white solid 3px;
   border-radius: 50%;
-  outline: none;
   opacity: 0.75;
-  -webkit-tap-highlight-color: transparent;
 
   &:active {
     background-color: gray;
@@ -39,25 +40,7 @@
 }
 
 .facing-mode-button {
-  display: flex;
   grid-area: facing-mode-button;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-
-  & > .button-icon {
-    width: 30%;
-    height: auto;
-  }
-
-  &:active,
-  &:disabled {
-    color: gray;
-  }
 }
 
 .zoom-slider {

@@ -1,8 +1,8 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import styles from './CameraController.css';
 
+import ControllerButton from '~/components/common/ControllerButton';
 import ZoomSlider from '~/components/camera/ZoomSlider';
 
 /**
@@ -36,14 +36,17 @@ const CameraController = (props) => {
           className={styles.zoomSlider}
         />
       )}
-      <button className={styles.shutterButton} onClick={onClickShutter} />
-      <button
-        className={styles.facingModeButton}
+      <ControllerButton
+        icon={<div className={styles.shutterIcon} />}
+        onClick={onClickShutter}
+        className={styles.shutterButton}
+      />
+      <ControllerButton
+        icon={faSyncAlt}
         disabled={disabledToggleFacingMode}
         onClick={onToggleFacingMode}
-      >
-        <FontAwesomeIcon className={styles.buttonIcon} icon={faSyncAlt} />
-      </button>
+        className={styles.facingModeButton}
+      />
     </div>
   );
 };
