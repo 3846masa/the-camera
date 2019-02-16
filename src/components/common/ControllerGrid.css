@@ -1,0 +1,26 @@
+.base {
+  display: grid;
+  grid-template-areas: 'left middle-left middle middle-right right';
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-column-gap: 10px;
+  justify-content: space-around;
+  width: 100%;
+  max-width: calc(20vh * 5 + 10px * 4);
+  margin: auto;
+
+  & > [data-grid-area='left'] {
+    grid-area: left;
+  }
+  & > [data-grid-area='middle-left'] {
+    grid-area: middle-left;
+  }
+  & > [data-grid-area='middle'] {
+    grid-area: middle;
+  }
+  & > [data-grid-area='middle-right'] {
+    grid-area: middle-right;
+  }
+  & > [data-grid-area='right'] {
+    grid-area: right;
+  }
+}
