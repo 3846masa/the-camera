@@ -2,23 +2,10 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  left: 0;
-  display: grid;
-  grid-template-areas:
-    '..... zoom-slider zoom-slider zoom-slider .....'
-    '..... facing-mode-button shutter-button ..... .....';
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  grid-column-gap: 10px;
-  justify-content: space-around;
   width: 100%;
-  max-width: calc(20vh * 5 + 10px * 4);
   padding: 25px 0;
   margin: auto;
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-.shutter-button {
-  grid-area: shutter-button;
 }
 
 .shutter-icon {
@@ -39,10 +26,6 @@
   }
 }
 
-.facing-mode-button {
-  grid-area: facing-mode-button;
-}
-
 .zoom-slider {
-  grid-area: zoom-slider;
+  grid-column: middle-left / middle-right;
 }

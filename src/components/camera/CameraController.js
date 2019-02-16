@@ -2,6 +2,7 @@ import React from 'react';
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import styles from './CameraController.css';
 
+import ControllerGrid from '~/components/common/ControllerGrid';
 import ControllerButton from '~/components/common/ControllerButton';
 import ZoomSlider from '~/components/camera/ZoomSlider';
 
@@ -28,25 +29,29 @@ const CameraController = (props) => {
 
   return (
     <div className={styles.base}>
-      {zoomRange && (
-        <ZoomSlider
-          value={zoom}
-          range={zoomRange}
-          onChange={onChangeZoom}
-          className={styles.zoomSlider}
+      <ControllerGrid>
+        {zoomRange && (
+          <ZoomSlider
+            value={zoom}
+            range={zoomRange}
+            onChange={onChangeZoom}
+            className={styles.zoomSlider}
+          />
+        )}
+      </ControllerGrid>
+      <ControllerGrid>
+        <ControllerButton
+          icon={<div className={styles.shutterIcon} />}
+          onClick={onClickShutter}
+          data-grid-area="middle"
         />
-      )}
-      <ControllerButton
-        icon={<div className={styles.shutterIcon} />}
-        onClick={onClickShutter}
-        className={styles.shutterButton}
-      />
-      <ControllerButton
-        icon={faSyncAlt}
-        disabled={disabledToggleFacingMode}
-        onClick={onToggleFacingMode}
-        className={styles.facingModeButton}
-      />
+        <ControllerButton
+          icon={faSyncAlt}
+          disabled={disabledToggleFacingMode}
+          onClick={onToggleFacingMode}
+          data-grid-area="middle-left"
+        />
+      </ControllerGrid>
     </div>
   );
 };
