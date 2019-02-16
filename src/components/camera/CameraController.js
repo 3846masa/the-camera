@@ -1,7 +1,9 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearchPlus, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import styles from './CameraController.css';
+
+import ZoomSlider from '~/components/camera/ZoomSlider';
 
 /**
  * @typedef Props
@@ -27,18 +29,12 @@ const CameraController = (props) => {
   return (
     <div className={styles.base}>
       {zoomRange && (
-        <div className={styles.zoomSliderWrapper}>
-          <FontAwesomeIcon icon={faSearchPlus} />
-          <input
-            type="range"
-            value={zoom}
-            min={zoomRange.min}
-            max={zoomRange.max}
-            step={zoomRange.step}
-            onChange={onChangeZoom}
-            className={styles.zoomSlider}
-          />
-        </div>
+        <ZoomSlider
+          value={zoom}
+          range={zoomRange}
+          onChange={onChangeZoom}
+          className={styles.zoomSlider}
+        />
       )}
       <button className={styles.shutterButton} onClick={onClickShutter} />
       <button
