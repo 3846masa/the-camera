@@ -2,6 +2,7 @@ import React from 'react';
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import styles from './CameraController.css';
 
+import ControllerWrapper from '~/components/common/ControllerWrapper';
 import ControllerGrid from '~/components/common/ControllerGrid';
 import ControllerButton from '~/components/common/ControllerButton';
 import ZoomSlider from '~/components/camera/ZoomSlider';
@@ -28,7 +29,7 @@ const CameraController = (props) => {
   } = props;
 
   return (
-    <div className={styles.base}>
+    <ControllerWrapper data-position="bottom">
       <ControllerGrid>
         {zoomRange && (
           <ZoomSlider
@@ -52,7 +53,7 @@ const CameraController = (props) => {
           data-grid-area="middle-left"
         />
       </ControllerGrid>
-    </div>
+    </ControllerWrapper>
   );
 };
 
