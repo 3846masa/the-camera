@@ -2,9 +2,11 @@ import React from 'react';
 import styles from './FilterPage.css';
 
 import Layout from '~/components/common/Layout';
+import Loading from '~/components/common/Loading';
 import FilterSelector from '~/components/filter/FilterSelector';
 import FilterSaveController from '~/components/filter/FilterSaveController';
 import EXIF from '~/helpers/EXIF';
+import applyFilter from '~/helpers/applyFilter';
 
 /**
  * @typedef Props
@@ -16,6 +18,7 @@ import EXIF from '~/helpers/EXIF';
 /**
  * @typedef State
  * @property {string | null} filterType
+ * @property {boolean} loading
  */
 
 /** @extends {React.Component<Props, State>} */
@@ -23,6 +26,7 @@ class FilterPage extends React.Component {
   /** @type {State} */
   state = {
     filterType: null,
+    loading: false,
   };
 
   /** @type {React.RefObject<HTMLCanvasElement>}*/
@@ -30,6 +34,13 @@ class FilterPage extends React.Component {
 
   componentDidMount() {
     this.initialize();
+  }
+
+  /** @param {State} prevState */
+  componentDidUpdate(_prevProps, prevState) {
+    if (this.state.filterType !== prevState.filterType) {
+      this.applyFilter();
+    }
   }
 
   async initialize() {
@@ -45,9 +56,21 @@ class FilterPage extends React.Component {
     ctx.drawImage(image, 0, 0);
   }
 
+  async applyFilter() {
+    const { blob } = this.props;
+    const { filterType } = this.state;
+
+    const canvas = this.canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    const result = await applyFilter(blob, filterType);
+    ctx.drawImage(result, 0, 0);
+
+    this.setState({ loading: false });
+  }
+
   /** @param {string} filterType */
   onSelectFilter = (filterType) => {
-    this.setState({ filterType });
+    this.setState({ filterType, loading: true });
   };
 
   onCancel = () => {
@@ -67,7 +90,7 @@ class FilterPage extends React.Component {
   };
 
   render() {
-    const { filterType } = this.state;
+    const { filterType, loading } = this.state;
 
     return (
       <Layout>
@@ -77,6 +100,7 @@ class FilterPage extends React.Component {
           filterType={filterType}
           onSelect={this.onSelectFilter}
         />
+        <Loading loading={loading} />
       </Layout>
     );
   }
