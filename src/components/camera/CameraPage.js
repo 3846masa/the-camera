@@ -19,7 +19,12 @@ import SHUTTER_EFFECT_PATH from '~/assets/shutter-effect.mp3';
  * @property {'user' | 'environment'} facingMode
  */
 
-/** @extends {React.Component<{}, State>} */
+/**
+ * @typedef Props
+ * @property {(blob: Blob) => void} onTakePhoto
+ */
+
+/** @extends {React.Component<Props, State>} */
 class CameraPage extends React.Component {
   /** @type {State} */
   state = {
@@ -46,6 +51,10 @@ class CameraPage extends React.Component {
     if (this.state.facingMode !== prevState.facingMode) {
       this.updateStream();
     }
+  }
+
+  componentWillUnmount() {
+    this.closeStream();
   }
 
   async initialize() {
@@ -92,7 +101,7 @@ class CameraPage extends React.Component {
 
     const { stream, facingMode } = this.state;
     const blob = await captureImage(stream, facingMode);
-    saveAs(blob, `${Date.now()}.jpg`);
+    this.props.onTakePhoto(blob);
   };
 
   onToggleFacingMode = () => {
