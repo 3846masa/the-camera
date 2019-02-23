@@ -1,3 +1,3 @@
-import grayscale from '~/filters/purejs/grayscale';
+import grayscale from '~/filters/webgl/grayscale';
 
 export { grayscale };

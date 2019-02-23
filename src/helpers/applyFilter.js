@@ -1,4 +1,5 @@
 import * as filters from '~/filters';
+import resizePowerOfTwo from '~/helpers/resizePowerOfTwo';
 
 /**
  * @param {Blob} blob
@@ -6,7 +7,7 @@ import * as filters from '~/filters';
  * @returns {Promise<ImageBitmap>}
  */
 async function applyFilter(blob, filterType) {
-  const bitmap = await createImageBitmap(blob);
+  const bitmap = await resizePowerOfTwo(await createImageBitmap(blob));
 
   const canvas = document.createElement('canvas');
   Object.assign(canvas, {
