@@ -1,5 +1,9 @@
 import React from 'react';
-import { faAdjust, faTint } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAdjust,
+  faTint,
+  faPaintBrush,
+} from '@fortawesome/free-solid-svg-icons';
 
 import ControllerWrapper from '~/components/common/ControllerWrapper';
 import ControllerGrid from '~/components/common/ControllerGrid';
@@ -40,6 +44,12 @@ class FilterSelector extends React.Component {
             onClick={() => this.onSelectFilter('colorSplit')}
             data-selected={filterType === 'colorSplit'}
             data-grid-area="middle-left"
+          />
+          <ControllerButton
+            icon={faPaintBrush}
+            onClick={() => this.onSelectFilter('bilateral')}
+            data-selected={filterType === 'bilateral'}
+            data-grid-area="middle-right"
           />
         </ControllerGrid>
       </ControllerWrapper>
