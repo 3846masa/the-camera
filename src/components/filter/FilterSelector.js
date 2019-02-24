@@ -4,6 +4,7 @@ import {
   faTint,
   faPaintBrush,
   faSmile,
+  faPalette,
 } from '@fortawesome/free-solid-svg-icons';
 
 import ControllerWrapper from '~/components/common/ControllerWrapper';
@@ -58,6 +59,12 @@ class FilterSelector extends React.Component {
             disabled={!('FaceDetector' in window)}
             data-selected={filterType === 'faceBulge'}
             data-grid-area="left"
+          />
+          <ControllerButton
+            icon={faPalette}
+            onClick={() => this.onSelectFilter('stylize')}
+            data-selected={filterType === 'stylize'}
+            data-grid-area="right"
           />
         </ControllerGrid>
       </ControllerWrapper>
