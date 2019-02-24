@@ -1,5 +1,5 @@
 import React from 'react';
-import { faAdjust } from '@fortawesome/free-solid-svg-icons';
+import { faAdjust, faTint } from '@fortawesome/free-solid-svg-icons';
 
 import ControllerWrapper from '~/components/common/ControllerWrapper';
 import ControllerGrid from '~/components/common/ControllerGrid';
@@ -34,6 +34,12 @@ class FilterSelector extends React.Component {
             onClick={() => this.onSelectFilter('grayscale')}
             data-selected={filterType === 'grayscale'}
             data-grid-area="middle"
+          />
+          <ControllerButton
+            icon={faTint}
+            onClick={() => this.onSelectFilter('colorSplit')}
+            data-selected={filterType === 'colorSplit'}
+            data-grid-area="middle-left"
           />
         </ControllerGrid>
       </ControllerWrapper>
