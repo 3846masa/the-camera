@@ -3,6 +3,7 @@ import {
   faAdjust,
   faTint,
   faPaintBrush,
+  faSmile,
 } from '@fortawesome/free-solid-svg-icons';
 
 import ControllerWrapper from '~/components/common/ControllerWrapper';
@@ -50,6 +51,13 @@ class FilterSelector extends React.Component {
             onClick={() => this.onSelectFilter('bilateral')}
             data-selected={filterType === 'bilateral'}
             data-grid-area="middle-right"
+          />
+          <ControllerButton
+            icon={faSmile}
+            onClick={() => this.onSelectFilter('faceBulge')}
+            disabled={!('FaceDetector' in window)}
+            data-selected={filterType === 'faceBulge'}
+            data-grid-area="left"
           />
         </ControllerGrid>
       </ControllerWrapper>
