@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { LicenseWebpackPlugin } = require('license-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const WorkerPlugin = require('worker-plugin');
 
 /** @type {import('webpack').Configuration} */
 const config = {
@@ -56,6 +57,9 @@ const config = {
       addBanner: true,
     }),
     new CleanWebpackPlugin([path.resolve(__dirname, './dist')]),
+    new WorkerPlugin({
+      globalObject: 'self',
+    }),
   ],
   devServer: {
     host: '0.0.0.0',

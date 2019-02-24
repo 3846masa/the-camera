@@ -31,7 +31,8 @@
     "stylelint-prettier": "^1.0.6",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "worker-plugin": "^3.1.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
