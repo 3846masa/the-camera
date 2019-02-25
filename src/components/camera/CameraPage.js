@@ -8,6 +8,7 @@ import captureImage from '~/helpers/captureImage';
 import getConstraints from '~/helpers/getConstraints';
 import getZoomRange from '~/helpers/getZoomRange';
 import getGeolocation from '~/helpers/getGeolocation';
+import BarcodeReader from '~/helpers/BarcodeReader';
 import SHUTTER_EFFECT_PATH from '~/assets/shutter-effect.mp3';
 
 /**
@@ -36,6 +37,7 @@ class CameraPage extends React.Component {
   };
 
   shutterEffectRef = React.createRef();
+  barcodeReader = new BarcodeReader();
 
   get canToggleFacingMode() {
     const { constraints } = this.state;
@@ -55,6 +57,7 @@ class CameraPage extends React.Component {
 
   componentWillUnmount() {
     this.closeStream();
+    this.barcodeReader.terminate();
   }
 
   async initialize() {
@@ -67,6 +70,9 @@ class CameraPage extends React.Component {
     };
     const facingMode = constraints.environment ? 'environment' : 'user';
     this.setState({ constraints, facingMode });
+
+    this.barcodeReader.addEventListener('detect', this.onDetectBarcode);
+    this.barcodeReader.start();
   }
 
   async updateStream() {
@@ -82,6 +88,8 @@ class CameraPage extends React.Component {
     });
     const zoomRange = await getZoomRange(stream);
     this.setState({ stream, zoomRange, zoom: 1 });
+
+    this.barcodeReader.setStream(stream);
   }
 
   closeStream() {
@@ -94,6 +102,12 @@ class CameraPage extends React.Component {
       track.stop();
     }
   }
+
+  onDetectBarcode = ({ detail }) => {
+    this.barcodeReader.pause();
+    alert(detail.rawValue);
+    this.barcodeReader.start();
+  };
 
   onClickShutter = async () => {
     this.shutterEffectRef.current.currentTime = 0;
