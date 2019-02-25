@@ -1,10 +1,15 @@
 import { RelativeOrientationSensor } from 'motion-sensors-polyfill';
 import EventTarget from '@ungap/event-target';
+import * as clipboard from 'clipboard-polyfill';
 
 window.RelativeOrientationSensor =
   window.RelativeOrientationSensor || RelativeOrientationSensor;
 
 window.EventTarget = EventTarget;
+
+if (!('clipboard' in navigator)) {
+  navigator.clipboard = clipboard;
+}
 
 if (!('createImageBitmap' in self)) {
   /** @param {Blob | HTMLCanvasElement} source */
