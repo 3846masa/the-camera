@@ -4,6 +4,7 @@ import saveAs from 'file-saver';
 import Layout from '~/components/common/Layout';
 import CameraView from '~/components/camera/CameraView';
 import CameraController from '~/components/camera/CameraController';
+import BarcodeResultPopup from '~/components/camera/BarcodeResultPopup';
 import captureImage from '~/helpers/captureImage';
 import getConstraints from '~/helpers/getConstraints';
 import getZoomRange from '~/helpers/getZoomRange';
@@ -18,6 +19,7 @@ import SHUTTER_EFFECT_PATH from '~/assets/shutter-effect.mp3';
  * @property {MediaStream} stream
  * @property {Record<string, MediaTrackConstraints | null>} constraints
  * @property {'user' | 'environment'} facingMode
+ * @property {string} barcodeResult
  */
 
 /**
@@ -34,6 +36,7 @@ class CameraPage extends React.Component {
     stream: null,
     constraints: {},
     facingMode: null,
+    barcodeResult: '',
   };
 
   shutterEffectRef = React.createRef();
@@ -105,8 +108,13 @@ class CameraPage extends React.Component {
 
   onDetectBarcode = ({ detail }) => {
     this.barcodeReader.pause();
-    alert(detail.rawValue);
-    this.barcodeReader.start();
+    this.setState({ barcodeResult: detail.rawValue });
+  };
+
+  onClosePopup = () => {
+    this.setState({ barcodeResult: null }, () => {
+      this.barcodeReader.start();
+    });
   };
 
   onClickShutter = async () => {
@@ -141,7 +149,7 @@ class CameraPage extends React.Component {
   };
 
   render() {
-    const { stream, facingMode, zoom, zoomRange } = this.state;
+    const { stream, facingMode, zoom, zoomRange, barcodeResult } = this.state;
 
     return (
       <Layout>
@@ -159,6 +167,7 @@ class CameraPage extends React.Component {
           src={SHUTTER_EFFECT_PATH}
           ref={this.shutterEffectRef}
         />
+        <BarcodeResultPopup text={barcodeResult} onClose={this.onClosePopup} />
       </Layout>
     );
   }

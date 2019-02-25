@@ -41,6 +41,7 @@
     "@magenta/image": "^0.2.1",
     "@ungap/event-target": "^0.1.0",
     "classcat": "^3.2.5",
+    "clipboard-polyfill": "^2.7.0",
     "comlinkjs": "^3.2.0",
     "core-js": "^2.6.4",
     "dayjs": "^1.8.6",
