@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { LicenseWebpackPlugin } = require('license-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WorkerPlugin = require('worker-plugin');
+const WasmPackPlugin = require('@wasm-tool/wasm-pack-plugin');
 
 /** @type {import('webpack').Configuration} */
 const config = {
@@ -59,6 +60,9 @@ const config = {
     new CleanWebpackPlugin(),
     new WorkerPlugin({
       globalObject: 'self',
+    }),
+    new WasmPackPlugin({
+      crateDirectory: path.resolve(__dirname, './src/wasm'),
     }),
   ],
   devServer: {
