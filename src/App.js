@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader/root';
 
 import CameraPage from '~/components/camera/CameraPage';
 import FilterPage from '~/components/filter/FilterPage';
+import GifPage from '~/components/gif/GifPage';
 
 /**
  * @typedef State
@@ -28,9 +29,16 @@ class App extends React.Component {
   };
 
   /** @param {Blob} blob */
-  onSave = (blob) => {
-    saveAs(blob, `${Date.now()}.jpg`);
-    this.setState({ blob: null, page: 'camera' });
+  onSave = (blob, ext = 'jpg') => {
+    saveAs(blob, `${Date.now()}.${ext}`);
+    this.setState(({ page }) => ({
+      blob: null,
+      page: page === 'filter' ? 'camera' : page,
+    }));
+  };
+
+  onChangePage = (page) => {
+    this.setState({ page });
   };
 
   render() {
@@ -38,7 +46,12 @@ class App extends React.Component {
 
     switch (page) {
       case 'camera': {
-        return <CameraPage onTakePhoto={this.onTakePhoto} />;
+        return (
+          <CameraPage
+            onTakePhoto={this.onTakePhoto}
+            onChangePage={this.onChangePage}
+          />
+        );
       }
       case 'filter': {
         return (
@@ -47,6 +60,11 @@ class App extends React.Component {
             onCancel={this.onCancelFilter}
             onSave={this.onSave}
           />
+        );
+      }
+      case 'gif': {
+        return (
+          <GifPage onChangePage={this.onChangePage} onSave={this.onSave} />
         );
       }
     }
