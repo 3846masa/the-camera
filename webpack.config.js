@@ -5,6 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WorkerPlugin = require('worker-plugin');
 const WasmPackPlugin = require('@wasm-tool/wasm-pack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 /** @type {import('webpack').Configuration} */
 const config = {
@@ -90,6 +91,18 @@ const config = {
         {
           src: path.resolve(__dirname, './src/assets/app-icon.png'),
           sizes: [36, 48, 72, 96, 144, 192, 512],
+        },
+      ],
+    }),
+    new GenerateSW({
+      swDest: 'service-worker.js',
+      skipWaiting: true,
+      cacheId: 'the-camera',
+      exclude: [/\.map$/, /\.hot-update\./],
+      runtimeCaching: [
+        {
+          urlPattern: /./,
+          handler: 'staleWhileRevalidate',
         },
       ],
     }),
