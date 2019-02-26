@@ -1,0 +1,6 @@
+/service-worker.js
+  Cache-Control: no-cache,max-age=0
+
+# See https://github.com/GoogleChrome/OriginTrials
+/*
+  Origin-Trial: AsOabUpqVvcKYcQSZZgZKzpw3X4Tt/0pkJ4bGmgHZLenquAJf34sdNbN/DYaZPrmDiT/Tyu9SgosbRmH7fDL8AcAAABeeyJvcmlnaW4iOiJodHRwczovL3RoZS1jYW1lcmEubmV0bGlmeS5jb206NDQzIiwiZmVhdHVyZSI6IlNoYXBlRGV0ZWN0aW9uIiwiZXhwaXJ5IjoxNTUxODMwMzk5fQ==
