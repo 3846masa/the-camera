@@ -6,6 +6,7 @@ const WorkerPlugin = require('worker-plugin');
 const WasmPackPlugin = require('@wasm-tool/wasm-pack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { GenerateSW } = require('workbox-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 /** @type {import('webpack').Configuration} */
 const config = {
@@ -128,6 +129,12 @@ const config = {
         },
       ],
     }),
+    new CopyPlugin([
+      {
+        from: path.resolve(__dirname, 'public'),
+        to: './',
+      },
+    ]),
   ],
   devServer: {
     host: '0.0.0.0',
