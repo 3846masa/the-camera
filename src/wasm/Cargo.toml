@@ -1,0 +1,17 @@
+[package]
+name = "wasm"
+version = "0.1.0"
+authors = ["3846masa <3846masahiro+git@gmail.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2.37"
+gif = "0.10.1"
+color_quant = "1.0.1"
+console_error_panic_hook = "0.1.6"
+
+[profile.release]
+opt-level = "s"
