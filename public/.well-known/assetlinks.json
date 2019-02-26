@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.netlify.the_camera",
+      "sha256_cert_fingerprints": [
+        "B6:32:A7:4F:72:0B:91:6F:00:3A:5C:B1:24:B6:A8:F7:86:B7:55:28:C8:81:EC:4A:A7:D1:9F:E5:55:12:5C:F3"
+      ]
+    }
+  }
+]
