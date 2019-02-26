@@ -1,3 +1,5 @@
+import * as Comlink from 'comlinkjs';
+
 import createVideoElement from '~/helpers/createVideoElement';
 
 const CONFIG = Object.freeze({
@@ -13,6 +15,7 @@ class GifRecoder extends EventTarget {
   /** @type {ImageData[]} */
   frameList = [];
   tickRaf = null;
+  worker = new Worker('~/workers/gif.js', { type: 'module' });
 
   get imageData() {
     const { canvas, video } = this;
@@ -78,11 +81,17 @@ class GifRecoder extends EventTarget {
     const generatingEvent = new CustomEvent('generating');
     this.dispatchEvent(generatingEvent);
 
-    // TODO: Generating GIF
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-    const blob = await fetch(
-      'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACwAAAAAAQABAAACAkQBADs=',
-    ).then((res) => res.blob());
+    const wasm = Comlink.proxy(this.worker);
+    await wasm.initialize();
+
+    const encoder = await new wasm.GifEncoder(CONFIG.SIZE, CONFIG.SIZE);
+    for (const frame of this.frameList) {
+      await encoder.addFrame(frame.data);
+    }
+    const blob = new Blob([await encoder.render(CONFIG.FPS)], {
+      type: 'image/gif',
+    });
+    await encoder.free();
 
     this.startTime = null;
     this.frameList = [];
@@ -93,6 +102,7 @@ class GifRecoder extends EventTarget {
 
   terminate() {
     this.video.remove();
+    this.worker.terminate();
   }
 }
 
