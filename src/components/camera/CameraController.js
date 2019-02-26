@@ -1,5 +1,5 @@
 import React from 'react';
-import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSyncAlt, faVideo } from '@fortawesome/free-solid-svg-icons';
 import styles from './CameraController.css';
 
 import ControllerWrapper from '~/components/common/ControllerWrapper';
@@ -13,6 +13,7 @@ import ZoomSlider from '~/components/camera/ZoomSlider';
  * @property {*} [zoomRange]
  * @property {() => any} onClickShutter
  * @property {() => any} onToggleFacingMode
+ * @property {() => any} onChangeToGifPage
  * @property {(ev: any) => any} onChangeZoom
  * @property {boolean} [disabledToggleFacingMode]
  */
@@ -24,6 +25,7 @@ const CameraController = (props) => {
     zoomRange,
     onClickShutter,
     onChangeZoom,
+    onChangeToGifPage,
     onToggleFacingMode,
     disabledToggleFacingMode,
   } = props;
@@ -51,6 +53,11 @@ const CameraController = (props) => {
           disabled={disabledToggleFacingMode}
           onClick={onToggleFacingMode}
           data-grid-area="middle-left"
+        />
+        <ControllerButton
+          icon={faVideo}
+          onClick={onChangeToGifPage}
+          data-grid-area="middle-right"
         />
       </ControllerGrid>
     </ControllerWrapper>

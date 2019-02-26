@@ -25,6 +25,7 @@ import SHUTTER_EFFECT_PATH from '~/assets/shutter-effect.mp3';
 /**
  * @typedef Props
  * @property {(blob: Blob) => void} onTakePhoto
+ * @property {(page: string) => any} onChangePage
  */
 
 /** @extends {React.Component<Props, State>} */
@@ -148,6 +149,10 @@ class CameraPage extends React.Component {
     });
   };
 
+  onChangeToGifPage = () => {
+    this.props.onChangePage('gif');
+  };
+
   render() {
     const { stream, facingMode, zoom, zoomRange, barcodeResult } = this.state;
 
@@ -159,6 +164,7 @@ class CameraPage extends React.Component {
           zoomRange={zoomRange}
           onChangeZoom={this.onChangeZoom}
           onClickShutter={this.onClickShutter}
+          onChangeToGifPage={this.onChangeToGifPage}
           onToggleFacingMode={this.onToggleFacingMode}
           disabledToggleFacingMode={!this.canToggleFacingMode}
         />
