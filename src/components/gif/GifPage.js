@@ -5,6 +5,7 @@ import Loading from '~/components/common/Loading';
 import GifVideoView from '~/components/gif/GifVideoView';
 import GifController from '~/components/gif/GifController';
 import GifSaveController from '~/components/gif/GifSaveController';
+import GifRecoder from '~/helpers/GifRecorder';
 
 /**
  * @typedef Props
@@ -30,11 +31,14 @@ class GifPage extends React.Component {
     blob: null,
   };
 
+  recorder = new GifRecoder();
+
   componentDidMount() {
     this.initialize();
   }
 
   componentWillUnmount() {
+    this.recorder.terminate();
     this.closeStream();
   }
 
@@ -47,6 +51,11 @@ class GifPage extends React.Component {
       return false;
     }
     this.setState({ stream });
+
+    this.recorder.setStream(stream);
+    this.recorder.addEventListener('tick', this.onTick);
+    this.recorder.addEventListener('generating', this.onGenerating);
+    this.recorder.addEventListener('generate', this.onGenerate);
   }
 
   closeStream() {
@@ -59,9 +68,31 @@ class GifPage extends React.Component {
     }
   }
 
-  onRecStart = () => {};
+  onTick = ({ detail: recTime }) => {
+    this.setState({ recTime });
+  };
 
-  onRecStop = () => {};
+  onGenerating = () => {
+    this.setState({ loading: true });
+  };
+
+  onGenerate = ({ detail: blob }) => {
+    this.setState({
+      blob,
+      recTime: 0,
+      loading: false,
+    });
+  };
+
+  onRecStart = () => {
+    this.setState({ recTime: 0 }, () => {
+      this.recorder.startRecord();
+    });
+  };
+
+  onRecStop = () => {
+    this.recorder.stopRecord();
+  };
 
   onSave = () => {
     const { blob } = this.state;
