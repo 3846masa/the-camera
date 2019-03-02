@@ -1,3 +1,4 @@
+export default `
 precision mediump float;
 
 uniform sampler2D u_texture;
@@ -11,3 +12,4 @@ void main() {
   float blue = texture2D(u_texture, v_texCoord + vec2(10.0, -15.0) * pixel).b;
   gl_FragColor = vec4(red, green, blue, 1.0);
 }
+`;

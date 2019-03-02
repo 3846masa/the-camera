@@ -1,3 +1,4 @@
+export default `
 precision mediump float;
 
 uniform sampler2D u_texture;
@@ -8,3 +9,4 @@ void main() {
   float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114));
   gl_FragColor = vec4(vec3(gray), 1.0);
 }
+`;

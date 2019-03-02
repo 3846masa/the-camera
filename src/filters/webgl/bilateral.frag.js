@@ -1,3 +1,4 @@
+export default `
 precision mediump float;
 
 #define SIGMA 25.0
@@ -45,3 +46,4 @@ void main() {
   
   gl_FragColor = vec4(numer / denom, 1.0);
 }
+`;

@@ -1,7 +1,7 @@
 import glUtil from 'https://dev.jspm.io/gl-util@3';
 
-import vert from './default.vert';
-import frag from './grayscale.frag';
+import vert from './default.vert.js';
+import frag from './grayscale.frag.js';
 
 /**
  * @param {HTMLCanvasElement} canvas
