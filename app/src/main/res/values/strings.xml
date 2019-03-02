@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">The Camera</string>
+    <string name="asset_statements">
+    <![CDATA[
+      [{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target": {
+          "namespace": "web",
+          "site": "https://the-camera.netlify.com"
+        }
+      }]
+    ]]>
+    </string>
 </resources>
