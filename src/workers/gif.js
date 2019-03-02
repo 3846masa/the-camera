@@ -1,14 +1,13 @@
 import * as Comlink from 'https://unpkg.com/comlinkjs@^3.2.0?module';
 
-const wasmImport = import('/wasm/pkg/wasm.js');
+import '/wasm/pkg/wasm.js';
 
 const exposed = {
-  /** @type {import('/wasm/pkg/wasm.js').GifEncoder} */
   GifEncoder: null,
   async initialize() {
-    const wasm = await wasmImport;
-    wasm.initialize();
-    exposed.GifEncoder = wasm.GifEncoder;
+    await self.wasm_bindgen('/wasm/pkg/wasm_bg.wasm');
+    self.wasm_bindgen.initialize();
+    exposed.GifEncoder = self.wasm_bindgen.GifEncoder;
   },
 };
 
