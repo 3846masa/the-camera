@@ -1,4 +1,4 @@
-import * as Comlink from 'comlinkjs';
+import * as Comlink from 'https://unpkg.com/comlinkjs@^3.2.0?module';
 import createVideoElement from '/helpers/createVideoElement.js';
 
 class BarcodeReader extends EventTarget {

@@ -1,4 +1,4 @@
-import glUtil from 'gl-util';
+import glUtil from 'https://dev.jspm.io/gl-util@3';
 
 import vert from './default.vert';
 import frag from './bilateral.frag';

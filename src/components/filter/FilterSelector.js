@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'https://dev.jspm.io/react@16';
 import {
   faAdjust,
   faTint,
   faPaintBrush,
   faSmile,
   faPalette,
-} from '@fortawesome/free-solid-svg-icons';
+} from '/libraries/@fortawesome/free-solid-svg-icons/index.js';
 
 import ControllerWrapper from '/components/common/ControllerWrapper.js';
 import ControllerGrid from '/components/common/ControllerGrid.js';

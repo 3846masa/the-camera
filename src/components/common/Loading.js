@@ -1,6 +1,6 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import React from 'https://dev.jspm.io/react@16';
+import { FontAwesomeIcon } from '/libraries/@fortawesome/react-fontawesome/index.js';
+import { faSpinner } from '/libraries/@fortawesome/free-solid-svg-icons/index.js';
 import styles from './Loading.css';
 
 import Layout from '/components/common/Layout.js';

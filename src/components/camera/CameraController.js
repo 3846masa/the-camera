@@ -1,5 +1,8 @@
-import React from 'react';
-import { faSyncAlt, faVideo } from '@fortawesome/free-solid-svg-icons';
+import React from 'https://dev.jspm.io/react@16';
+import {
+  faSyncAlt,
+  faVideo,
+} from '/libraries/@fortawesome/free-solid-svg-icons/index.js';
 import styles from './CameraController.css';
 
 import ControllerWrapper from '/components/common/ControllerWrapper.js';

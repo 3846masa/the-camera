@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'https://dev.jspm.io/react@16';
 import styles from './GifShutterIcon.css';
 
 /**

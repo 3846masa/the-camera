@@ -1,6 +1,6 @@
-import { RelativeOrientationSensor } from 'motion-sensors-polyfill';
-import EventTarget from '@ungap/event-target';
-import * as clipboard from 'clipboard-polyfill';
+import { RelativeOrientationSensor } from 'https://unpkg.com/motion-sensors-polyfill@^0.3.1?module';
+import EventTarget from 'https://unpkg.com/@ungap/event-target@^0.1.0?module';
+import * as clipboard from '/libraries/clipboard-polyfill/index.js';
 
 window.RelativeOrientationSensor =
   window.RelativeOrientationSensor || RelativeOrientationSensor;

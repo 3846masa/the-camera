@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'https://dev.jspm.io/react@16';
 
 import CameraPage from '/components/camera/CameraPage.js';
 import FilterPage from '/components/filter/FilterPage.js';

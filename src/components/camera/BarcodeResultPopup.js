@@ -1,10 +1,10 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'https://dev.jspm.io/react@16';
+import { FontAwesomeIcon } from '/libraries/@fortawesome/react-fontawesome/index.js';
 import {
   faTimesCircle,
   faShareAlt,
   faClipboard,
-} from '@fortawesome/free-solid-svg-icons';
+} from '/libraries/@fortawesome/free-solid-svg-icons/index.js';
 import styles from './BarcodeResultPopup.css';
 
 import Layout from '/components/common/Layout.js';

@@ -1,6 +1,6 @@
-import React from 'react';
-import cc from 'classcat';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'https://dev.jspm.io/react@16';
+import cc from 'https://unpkg.com/classcat@^3.2.5?module';
+import { FontAwesomeIcon } from '/libraries/@fortawesome/react-fontawesome/index.js';
 
 import styles from './ControllerButton.css';
 

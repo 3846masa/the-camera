@@ -1,5 +1,5 @@
-import * as Comlink from 'comlinkjs';
-import jsQR from 'jsqr';
+import * as Comlink from 'https://unpkg.com/comlinkjs@^3.2.0?module';
+import jsQR from 'https://dev.jspm.io/jsqr@1';
 
 class BarcodeDetectorPolyfill {
   async detect(imageData) {

@@ -1,5 +1,5 @@
-import piexif from 'piexifjs';
-import dayjs from 'dayjs';
+import piexif from 'https://dev.jspm.io/piexifjs@1';
+import dayjs from 'https://dev.jspm.io/dayjs@1';
 
 import BinaryStringUtils from '/helpers/BinaryStringUtils.js';
 

@@ -1,6 +1,6 @@
 import '/polyfills.js';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'https://dev.jspm.io/react@16';
+import ReactDOM from 'https://dev.jspm.io/react-dom@16';
 
 import '/global.css';
 import App from '/App.js';

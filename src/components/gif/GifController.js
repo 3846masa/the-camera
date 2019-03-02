@@ -1,5 +1,5 @@
-import React from 'react';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import React from 'https://dev.jspm.io/react@16';
+import { faCamera } from '/libraries/@fortawesome/free-solid-svg-icons/index.js';
 
 import ControllerWrapper from '/components/common/ControllerWrapper.js';
 import ControllerGrid from '/components/common/ControllerGrid.js';

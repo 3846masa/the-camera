@@ -1,5 +1,5 @@
-import React from 'react';
-import saveAs from 'file-saver';
+import React from 'https://dev.jspm.io/react@16';
+import saveAs from 'https://dev.jspm.io/file-saver@2';
 
 import Layout from '/components/common/Layout.js';
 import CameraView from '/components/camera/CameraView.js';
@@ -10,7 +10,8 @@ import getConstraints from '/helpers/getConstraints.js';
 import getZoomRange from '/helpers/getZoomRange.js';
 import getGeolocation from '/helpers/getGeolocation.js';
 import BarcodeReader from '/helpers/BarcodeReader.js';
-import SHUTTER_EFFECT_PATH from '/assets/shutter-effect.mp3';
+
+const SHUTTER_EFFECT_PATH = '/assets/shutter-effect.mp3';
 
 /**
  * @typedef State

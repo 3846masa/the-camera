@@ -1,7 +1,6 @@
-import * as mi from '@magenta/image';
+import * as mi from '/libraries/@magenta/image/index.js';
 
-import STYLE_IMAGE_PATH from '/assets/gorge-improvisation.jpg';
-
+const STYLE_IMAGE_PATH = '/assets/gorge-improvisation.jpg';
 const SIZE = 256;
 
 const model = new mi.ArbitraryStyleTransferNetwork();
