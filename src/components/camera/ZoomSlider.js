@@ -4,7 +4,7 @@ import cc from 'https://unpkg.com/classcat@^3.2.5?module';
 import { FontAwesomeIcon } from '/libraries/@fortawesome/react-fontawesome/index.js';
 import { faSearchPlus } from '/libraries/@fortawesome/free-solid-svg-icons/index.js';
 
-import styles from './ZoomSlider.css';
+import styles from './ZoomSlider.css.js';
 
 /**
  * @typedef Props

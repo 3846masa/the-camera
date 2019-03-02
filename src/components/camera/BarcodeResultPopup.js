@@ -6,7 +6,7 @@ import {
   faShareAlt,
   faClipboard,
 } from '/libraries/@fortawesome/free-solid-svg-icons/index.js';
-import styles from './BarcodeResultPopup.css';
+import styles from './BarcodeResultPopup.css.js';
 
 import Layout from '/components/common/Layout.js';
 

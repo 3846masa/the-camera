@@ -4,7 +4,7 @@ import {
   faSyncAlt,
   faVideo,
 } from '/libraries/@fortawesome/free-solid-svg-icons/index.js';
-import styles from './CameraController.css';
+import styles from './CameraController.css.js';
 
 import ControllerWrapper from '/components/common/ControllerWrapper.js';
 import ControllerGrid from '/components/common/ControllerGrid.js';

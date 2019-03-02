@@ -1,6 +1,6 @@
 import React from 'https://dev.jspm.io/react@16';
 import html from '/libraries/htm/index.js';
-import styles from './GifVideoView.css';
+import styles from './GifVideoView.css.js';
 
 import Video from '/components/common/Video.js';
 

@@ -3,7 +3,7 @@ import html from '/libraries/htm/index.js';
 import cc from 'https://unpkg.com/classcat@^3.2.5?module';
 import { FontAwesomeIcon } from '/libraries/@fortawesome/react-fontawesome/index.js';
 
-import styles from './ControllerButton.css';
+import styles from './ControllerButton.css.js';
 
 /**
  * @typedef Props

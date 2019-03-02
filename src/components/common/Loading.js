@@ -2,7 +2,7 @@ import React from 'https://dev.jspm.io/react@16';
 import html from '/libraries/htm/index.js';
 import { FontAwesomeIcon } from '/libraries/@fortawesome/react-fontawesome/index.js';
 import { faSpinner } from '/libraries/@fortawesome/free-solid-svg-icons/index.js';
-import styles from './Loading.css';
+import styles from './Loading.css.js';
 
 import Layout from '/components/common/Layout.js';
 

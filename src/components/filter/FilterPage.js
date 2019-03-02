@@ -1,6 +1,6 @@
 import React from 'https://dev.jspm.io/react@16';
 import html from '/libraries/htm/index.js';
-import styles from './FilterPage.css';
+import styles from './FilterPage.css.js';
 
 import Layout from '/components/common/Layout.js';
 import Loading from '/components/common/Loading.js';

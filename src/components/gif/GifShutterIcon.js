@@ -1,6 +1,6 @@
 import React from 'https://dev.jspm.io/react@16';
 import html from '/libraries/htm/index.js';
-import styles from './GifShutterIcon.css';
+import styles from './GifShutterIcon.css.js';
 
 /**
  * @typedef Props
