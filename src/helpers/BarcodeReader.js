@@ -1,5 +1,5 @@
 import * as Comlink from 'comlinkjs';
-import createVideoElement from '~/helpers/createVideoElement';
+import createVideoElement from '/helpers/createVideoElement.js';
 
 class BarcodeReader extends EventTarget {
   /** @type {HTMLVideoElement | null} */
@@ -7,7 +7,7 @@ class BarcodeReader extends EventTarget {
   canvas = document.createElement('canvas');
   detector = null;
   timeoutId = null;
-  worker = new Worker('~/workers/barcode.js', { type: 'module' });
+  worker = new Worker('/workers/barcode.js', { type: 'module' });
 
   get imageData() {
     if (!this.video) {

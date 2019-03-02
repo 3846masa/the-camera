@@ -1,4 +1,4 @@
-import * as filters from '~/filters';
+import * as filters from '/filters/index.js';
 
 self.addEventListener('message', async ({ data }) => {
   const { filterType, bitmap, canvas } = data;

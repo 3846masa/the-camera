@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './FilterPage.css';
 
-import Layout from '~/components/common/Layout';
-import Loading from '~/components/common/Loading';
-import FilterSelector from '~/components/filter/FilterSelector';
-import FilterSaveController from '~/components/filter/FilterSaveController';
-import EXIF from '~/helpers/EXIF';
-import applyFilter from '~/helpers/applyFilter';
+import Layout from '/components/common/Layout.js';
+import Loading from '/components/common/Loading.js';
+import FilterSelector from '/components/filter/FilterSelector.js';
+import FilterSaveController from '/components/filter/FilterSaveController.js';
+import EXIF from '/helpers/EXIF.js';
+import applyFilter from '/helpers/applyFilter.js';
 
 /**
  * @typedef Props

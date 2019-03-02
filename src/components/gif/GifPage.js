@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Layout from '~/components/common/Layout';
-import Loading from '~/components/common/Loading';
-import GifVideoView from '~/components/gif/GifVideoView';
-import GifController from '~/components/gif/GifController';
-import GifSaveController from '~/components/gif/GifSaveController';
-import GifRecoder from '~/helpers/GifRecorder';
+import Layout from '/components/common/Layout.js';
+import Loading from '/components/common/Loading.js';
+import GifVideoView from '/components/gif/GifVideoView.js';
+import GifController from '/components/gif/GifController.js';
+import GifSaveController from '/components/gif/GifSaveController.js';
+import GifRecoder from '/helpers/GifRecorder.js';
 
 /**
  * @typedef Props

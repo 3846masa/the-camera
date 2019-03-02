@@ -1,9 +1,9 @@
 import React from 'react';
 import { faTimesCircle, faSave } from '@fortawesome/free-solid-svg-icons';
 
-import ControllerWrapper from '~/components/common/ControllerWrapper';
-import ControllerGrid from '~/components/common/ControllerGrid';
-import ControllerButton from '~/components/common/ControllerButton';
+import ControllerWrapper from '/components/common/ControllerWrapper.js';
+import ControllerGrid from '/components/common/ControllerGrid.js';
+import ControllerButton from '/components/common/ControllerButton.js';
 
 /**
  * @typedef Props

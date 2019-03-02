@@ -1,4 +1,4 @@
-import createVideoElement from '~/helpers/createVideoElement';
+import createVideoElement from '/helpers/createVideoElement.js';
 
 /**
  * @param {MediaStream} stream

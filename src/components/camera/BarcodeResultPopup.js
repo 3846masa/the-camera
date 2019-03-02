@@ -7,7 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './BarcodeResultPopup.css';
 
-import Layout from '~/components/common/Layout';
+import Layout from '/components/common/Layout.js';
 
 const URL_REGEXP = /https?:\/\/[^\/]+\.[^\.\s\/]+(?:\/[^\s()<>]*)?/;
 

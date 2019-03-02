@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CameraView.css';
 
-import Video from '~/components/common/Video';
+import Video from '/components/common/Video.js';
 
 /**
  * @typedef Props

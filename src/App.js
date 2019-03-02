@@ -1,8 +1,8 @@
 import React from 'react';
 
-import CameraPage from '~/components/camera/CameraPage';
-import FilterPage from '~/components/filter/FilterPage';
-import GifPage from '~/components/gif/GifPage';
+import CameraPage from '/components/camera/CameraPage.js';
+import FilterPage from '/components/filter/FilterPage.js';
+import GifPage from '/components/gif/GifPage.js';
 
 /**
  * @typedef State

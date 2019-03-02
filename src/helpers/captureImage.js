@@ -1,8 +1,8 @@
-import createVideoElement from '~/helpers/createVideoElement';
-import createImageBlob from '~/helpers/createImageBlob';
-import getGeolocation from '~/helpers/getGeolocation';
-import getOrientation from '~/helpers/getOrientation';
-import EXIF from '~/helpers/EXIF';
+import createVideoElement from '/helpers/createVideoElement.js';
+import createImageBlob from '/helpers/createImageBlob.js';
+import getGeolocation from '/helpers/getGeolocation.js';
+import getOrientation from '/helpers/getOrientation.js';
+import EXIF from '/helpers/EXIF.js';
 
 /**
  * @param {MediaStream} stream

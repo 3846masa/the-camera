@@ -1,4 +1,4 @@
-import createVideoElement from '~/helpers/createVideoElement';
+import createVideoElement from '/helpers/createVideoElement.js';
 
 const RESOLUTION_LIST = [
   { width: 7680, height: 4320 }, // 8K

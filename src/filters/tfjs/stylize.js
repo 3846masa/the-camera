@@ -1,6 +1,6 @@
 import * as mi from '@magenta/image';
 
-import STYLE_IMAGE_PATH from '~/assets/gorge-improvisation.jpg';
+import STYLE_IMAGE_PATH from '/assets/gorge-improvisation.jpg';
 
 const SIZE = 256;
 

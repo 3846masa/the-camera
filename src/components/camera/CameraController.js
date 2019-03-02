@@ -2,10 +2,10 @@ import React from 'react';
 import { faSyncAlt, faVideo } from '@fortawesome/free-solid-svg-icons';
 import styles from './CameraController.css';
 
-import ControllerWrapper from '~/components/common/ControllerWrapper';
-import ControllerGrid from '~/components/common/ControllerGrid';
-import ControllerButton from '~/components/common/ControllerButton';
-import ZoomSlider from '~/components/camera/ZoomSlider';
+import ControllerWrapper from '/components/common/ControllerWrapper.js';
+import ControllerGrid from '/components/common/ControllerGrid.js';
+import ControllerButton from '/components/common/ControllerButton.js';
+import ZoomSlider from '/components/camera/ZoomSlider.js';
 
 /**
  * @typedef Props

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import styles from './Loading.css';
 
-import Layout from '~/components/common/Layout';
+import Layout from '/components/common/Layout.js';
 
 /**
  * @typedef Props

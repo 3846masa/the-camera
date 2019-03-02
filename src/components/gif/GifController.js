@@ -1,10 +1,10 @@
 import React from 'react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 
-import ControllerWrapper from '~/components/common/ControllerWrapper';
-import ControllerGrid from '~/components/common/ControllerGrid';
-import ControllerButton from '~/components/common/ControllerButton';
-import GifShutterIcon from '~/components/gif/GifShutterIcon';
+import ControllerWrapper from '/components/common/ControllerWrapper.js';
+import ControllerGrid from '/components/common/ControllerGrid.js';
+import ControllerButton from '/components/common/ControllerButton.js';
+import GifShutterIcon from '/components/gif/GifShutterIcon.js';
 
 /**
  * @typedef Props

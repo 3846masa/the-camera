@@ -1,6 +1,6 @@
 import * as Comlink from 'comlinkjs';
 
-import createVideoElement from '~/helpers/createVideoElement';
+import createVideoElement from '/helpers/createVideoElement.js';
 
 const CONFIG = Object.freeze({
   SIZE: 256,
@@ -15,7 +15,7 @@ class GifRecoder extends EventTarget {
   /** @type {ImageData[]} */
   frameList = [];
   tickRaf = null;
-  worker = new Worker('~/workers/gif.js', { type: 'module' });
+  worker = new Worker('/workers/gif.js', { type: 'module' });
 
   get imageData() {
     const { canvas, video } = this;

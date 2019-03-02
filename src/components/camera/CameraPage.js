@@ -1,16 +1,16 @@
 import React from 'react';
 import saveAs from 'file-saver';
 
-import Layout from '~/components/common/Layout';
-import CameraView from '~/components/camera/CameraView';
-import CameraController from '~/components/camera/CameraController';
-import BarcodeResultPopup from '~/components/camera/BarcodeResultPopup';
-import captureImage from '~/helpers/captureImage';
-import getConstraints from '~/helpers/getConstraints';
-import getZoomRange from '~/helpers/getZoomRange';
-import getGeolocation from '~/helpers/getGeolocation';
-import BarcodeReader from '~/helpers/BarcodeReader';
-import SHUTTER_EFFECT_PATH from '~/assets/shutter-effect.mp3';
+import Layout from '/components/common/Layout.js';
+import CameraView from '/components/camera/CameraView.js';
+import CameraController from '/components/camera/CameraController.js';
+import BarcodeResultPopup from '/components/camera/BarcodeResultPopup.js';
+import captureImage from '/helpers/captureImage.js';
+import getConstraints from '/helpers/getConstraints.js';
+import getZoomRange from '/helpers/getZoomRange.js';
+import getGeolocation from '/helpers/getGeolocation.js';
+import BarcodeReader from '/helpers/BarcodeReader.js';
+import SHUTTER_EFFECT_PATH from '/assets/shutter-effect.mp3';
 
 /**
  * @typedef State

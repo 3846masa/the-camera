@@ -1,7 +1,7 @@
 import piexif from 'piexifjs';
 import dayjs from 'dayjs';
 
-import BinaryStringUtils from '~/helpers/BinaryStringUtils';
+import BinaryStringUtils from '/helpers/BinaryStringUtils.js';
 
 const { degToDmsRational } = piexif.GPSHelper;
 

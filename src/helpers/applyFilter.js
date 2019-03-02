@@ -1,5 +1,5 @@
-import * as filters from '~/filters';
-import resizePowerOfTwo from '~/helpers/resizePowerOfTwo';
+import * as filters from '/filters/index.js';
+import resizePowerOfTwo from '/helpers/resizePowerOfTwo.js';
 
 /**
  * @param {Blob} blob
@@ -27,7 +27,7 @@ async function applyFilter(blob, filterType) {
     return result;
   }
 
-  const worker = new Worker('~/workers/filters.js', { type: 'module' });
+  const worker = new Worker('/workers/filters.js', { type: 'module' });
   const waitRenderingPromise = new Promise((resolve) => {
     worker.addEventListener('message', resolve, { once: true });
   });
