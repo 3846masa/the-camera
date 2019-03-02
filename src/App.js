@@ -1,5 +1,4 @@
 import React from 'react';
-import { hot } from 'react-hot-loader/root';
 
 import CameraPage from '~/components/camera/CameraPage';
 import FilterPage from '~/components/filter/FilterPage';
@@ -71,4 +70,4 @@ class App extends React.Component {
   }
 }
 
-export default hot(App);
+export default App;
