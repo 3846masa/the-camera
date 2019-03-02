@@ -1,4 +1,5 @@
 import React from 'https://dev.jspm.io/react@16';
+import html from '/libraries/htm/index.js';
 
 import CameraPage from '/components/camera/CameraPage.js';
 import FilterPage from '/components/filter/FilterPage.js';
@@ -45,26 +46,26 @@ class App extends React.Component {
 
     switch (page) {
       case 'camera': {
-        return (
-          <CameraPage
-            onTakePhoto={this.onTakePhoto}
-            onChangePage={this.onChangePage}
+        return html`
+          <${CameraPage}
+            onTakePhoto=${this.onTakePhoto}
+            onChangePage=${this.onChangePage}
           />
-        );
+        `;
       }
       case 'filter': {
-        return (
-          <FilterPage
-            blob={blob}
-            onCancel={this.onCancelFilter}
-            onSave={this.onSave}
+        return html`
+          <${FilterPage}
+            blob=${blob}
+            onCancel=${this.onCancelFilter}
+            onSave=${this.onSave}
           />
-        );
+        `;
       }
       case 'gif': {
-        return (
-          <GifPage onChangePage={this.onChangePage} onSave={this.onSave} />
-        );
+        return html`
+          <${GifPage} onChangePage=${this.onChangePage} onSave=${this.onSave} />
+        `;
       }
     }
   }

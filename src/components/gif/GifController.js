@@ -1,4 +1,5 @@
 import React from 'https://dev.jspm.io/react@16';
+import html from '/libraries/htm/index.js';
 import { faCamera } from '/libraries/@fortawesome/free-solid-svg-icons/index.js';
 
 import ControllerWrapper from '/components/common/ControllerWrapper.js';
@@ -15,27 +16,25 @@ import GifShutterIcon from '/components/gif/GifShutterIcon.js';
  */
 
 /** @type {React.FC<Props>} */
-const GifController = ({
-  time,
-  onRecStart,
-  onRecStop,
-  onChangeToCameraPage,
-}) => (
-  <ControllerWrapper data-position="bottom">
-    <ControllerGrid>
-      <ControllerButton
-        icon={<GifShutterIcon time={time} />}
-        onTouchStart={onRecStart}
-        onTouchEnd={onRecStop}
-        data-grid-area="middle"
-      />
-      <ControllerButton
-        icon={faCamera}
-        onClick={onChangeToCameraPage}
-        data-grid-area="middle-right"
-      />
-    </ControllerGrid>
-  </ControllerWrapper>
-);
+const GifController = ({ time, onRecStart, onRecStop, onChangeToCameraPage }) =>
+  html`
+    <${ControllerWrapper} data-position="bottom">
+      <${ControllerGrid}>
+        <${ControllerButton}
+          icon=${html`
+            <${GifShutterIcon} time=${time} />
+          `}
+          onTouchStart=${onRecStart}
+          onTouchEnd=${onRecStop}
+          data-grid-area="middle"
+        />
+        <${ControllerButton}
+          icon=${faCamera}
+          onClick=${onChangeToCameraPage}
+          data-grid-area="middle-right"
+        />
+      <//>
+    <//>
+  `;
 
 export default GifController;

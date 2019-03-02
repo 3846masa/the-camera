@@ -1,7 +1,11 @@
 import React from 'https://dev.jspm.io/react@16';
+import html from '/libraries/htm/index.js';
 import styles from './Layout.css';
 
 /** @type {React.FC<React.HTMLAttributes<HTMLDivElement>>} */
-const Layout = (props) => <div {...props} className={styles.base} />;
+const Layout = (props) =>
+  html`
+    <div ...${props} className=${styles.base} />
+  `;
 
 export default Layout;

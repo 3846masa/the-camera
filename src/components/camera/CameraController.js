@@ -1,4 +1,5 @@
 import React from 'https://dev.jspm.io/react@16';
+import html from '/libraries/htm/index.js';
 import {
   faSyncAlt,
   faVideo,
@@ -33,38 +34,41 @@ const CameraController = (props) => {
     disabledToggleFacingMode,
   } = props;
 
-  return (
-    <ControllerWrapper data-position="bottom">
-      <ControllerGrid>
-        {zoomRange && (
-          <ZoomSlider
-            value={zoom}
-            range={zoomRange}
-            onChange={onChangeZoom}
-            className={styles.zoomSlider}
-          />
-        )}
-      </ControllerGrid>
-      <ControllerGrid>
-        <ControllerButton
-          icon={<div className={styles.shutterIcon} />}
-          onClick={onClickShutter}
+  return html`
+    <${ControllerWrapper} data-position="bottom">
+      <${ControllerGrid}>
+        ${zoomRange &&
+          html`
+            <${ZoomSlider}
+              value=${zoom}
+              range=${zoomRange}
+              onChange=${onChangeZoom}
+              className=${styles.zoomSlider}
+            />
+          `}
+      <//>
+      <${ControllerGrid}>
+        <${ControllerButton}
+          icon=${html`
+            <div className=${styles.shutterIcon} />
+          `}
+          onClick=${onClickShutter}
           data-grid-area="middle"
         />
-        <ControllerButton
-          icon={faSyncAlt}
-          disabled={disabledToggleFacingMode}
-          onClick={onToggleFacingMode}
+        <${ControllerButton}
+          icon=${faSyncAlt}
+          disabled=${disabledToggleFacingMode}
+          onClick=${onToggleFacingMode}
           data-grid-area="middle-left"
         />
-        <ControllerButton
-          icon={faVideo}
-          onClick={onChangeToGifPage}
+        <${ControllerButton}
+          icon=${faVideo}
+          onClick=${onChangeToGifPage}
           data-grid-area="middle-right"
         />
-      </ControllerGrid>
-    </ControllerWrapper>
-  );
+      <//>
+    <//>
+  `;
 };
 
 export default CameraController;

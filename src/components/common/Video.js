@@ -1,4 +1,5 @@
 import React from 'https://dev.jspm.io/react@16';
+import html from '/libraries/htm/index.js';
 
 /**
  * @typedef Props
@@ -27,7 +28,9 @@ class Video extends React.Component {
 
   render() {
     const { srcObject, ...rest } = this.props;
-    return <video {...rest} ref={this.ref} />;
+    return html`
+      <video ...${rest} ref=${this.ref} />
+    `;
   }
 }
 

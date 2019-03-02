@@ -1,4 +1,5 @@
 import React from 'https://dev.jspm.io/react@16';
+import html from '/libraries/htm/index.js';
 import styles from './FilterPage.css';
 
 import Layout from '/components/common/Layout.js';
@@ -92,17 +93,20 @@ class FilterPage extends React.Component {
   render() {
     const { filterType, loading } = this.state;
 
-    return (
-      <Layout>
-        <canvas ref={this.canvasRef} className={styles.canvas} />
-        <FilterSaveController onCancel={this.onCancel} onSave={this.onSave} />
-        <FilterSelector
-          filterType={filterType}
-          onSelect={this.onSelectFilter}
+    return html`
+      <${Layout}>
+        <canvas ref=${this.canvasRef} className=${styles.canvas} />
+        <${FilterSaveController}
+          onCancel=${this.onCancel}
+          onSave=${this.onSave}
         />
-        <Loading loading={loading} />
-      </Layout>
-    );
+        <${FilterSelector}
+          filterType=${filterType}
+          onSelect=${this.onSelectFilter}
+        />
+        <${Loading} loading=${loading} />
+      <//>
+    `;
   }
 }
 

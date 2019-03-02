@@ -1,4 +1,5 @@
 import React from 'https://dev.jspm.io/react@16';
+import html from '/libraries/htm/index.js';
 import { FontAwesomeIcon } from '/libraries/@fortawesome/react-fontawesome/index.js';
 import {
   faTimesCircle,
@@ -47,9 +48,11 @@ class BarcodeResultPopup extends React.Component {
       ];
       elems.push(prevText);
       elems.push(
-        <a href={href} target="_blank">
-          {href}
-        </a>,
+        html`
+          <a href=${href} target="_blank">
+            ${href}
+          </a>
+        `,
       );
     }
 
@@ -80,32 +83,32 @@ class BarcodeResultPopup extends React.Component {
       return null;
     }
 
-    return (
-      <Layout>
-        <div className={styles.base}>
-          <div className={styles.popup}>
-            <button className={styles.closeButton} onClick={this.onClose}>
-              <FontAwesomeIcon icon={faTimesCircle} />
+    return html`
+      <${Layout}>
+        <div className=${styles.base}>
+          <div className=${styles.popup}>
+            <button className=${styles.closeButton} onClick=${this.onClose}>
+              <${FontAwesomeIcon} icon=${faTimesCircle} />
             </button>
 
             <p>{this.getResultAsHtml()}</p>
 
-            <button className={styles.button} onClick={this.onCopy}>
-              <FontAwesomeIcon icon={faClipboard} />
+            <button className=${styles.button} onClick=${this.onCopy}>
+              <${FontAwesomeIcon} icon=${faClipboard} />
               <span>&nbsp;{copied ? 'Copied!' : 'Copy to Clipboard'}</span>
             </button>
             <button
-              className={styles.button}
-              disabled={!('share' in navigator)}
-              onClick={this.onShare}
+              className=${styles.button}
+              disabled=${!('share' in navigator)}
+              onClick=${this.onShare}
             >
-              <FontAwesomeIcon icon={faShareAlt} />
+              <${FontAwesomeIcon} icon=${faShareAlt} />
               <span>&nbsp;Share</span>
             </button>
           </div>
         </div>
-      </Layout>
-    );
+      <//>
+    `;
   }
 }
 

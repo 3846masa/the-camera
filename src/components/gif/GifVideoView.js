@@ -1,4 +1,5 @@
 import React from 'https://dev.jspm.io/react@16';
+import html from '/libraries/htm/index.js';
 import styles from './GifVideoView.css';
 
 import Video from '/components/common/Video.js';
@@ -13,28 +14,30 @@ import Video from '/components/common/Video.js';
 const GifVideoView = ({ videoSrc, imageSrc }) => {
   const imageUrl = imageSrc ? URL.createObjectURL(imageSrc) : null;
 
-  return (
-    <div className={styles.base}>
-      <div className={styles.videoWrapper}>
-        {videoSrc && (
-          <Video
-            muted
-            autoPlay
-            playsInline
-            srcObject={videoSrc}
-            className={styles.video}
-          />
-        )}
-        {imageSrc && (
-          <img
-            src={imageUrl}
-            onLoad={() => URL.revokeObjectURL(imageUrl)}
-            className={styles.video}
-          />
-        )}
+  return html`
+    <div className=${styles.base}>
+      <div className=${styles.videoWrapper}>
+        ${videoSrc &&
+          html`
+            <${Video}
+              muted
+              autoPlay
+              playsInline
+              srcObject=${videoSrc}
+              className=${styles.video}
+            />
+          `}
+        ${imageSrc &&
+          html`
+            <img
+              src=${imageUrl}
+              onLoad=${() => URL.revokeObjectURL(imageUrl)}
+              className=${styles.video}
+            />
+          `}
       </div>
     </div>
-  );
+  `;
 };
 
 export default GifVideoView;

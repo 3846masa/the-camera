@@ -1,4 +1,5 @@
 import React from 'https://dev.jspm.io/react@16';
+import html from '/libraries/htm/index.js';
 import {
   faAdjust,
   faTint,
@@ -32,43 +33,43 @@ class FilterSelector extends React.Component {
   render() {
     const { filterType } = this.props;
 
-    return (
-      <ControllerWrapper data-position="bottom">
-        <ControllerGrid>
-          <ControllerButton
-            icon={faAdjust}
-            onClick={() => this.onSelectFilter('grayscale')}
-            data-selected={filterType === 'grayscale'}
+    return html`
+      <${ControllerWrapper} data-position="bottom">
+        <${ControllerGrid}>
+          <${ControllerButton}
+            icon=${faAdjust}
+            onClick=${() => this.onSelectFilter('grayscale')}
+            data-selected=${filterType === 'grayscale'}
             data-grid-area="middle"
           />
-          <ControllerButton
-            icon={faTint}
-            onClick={() => this.onSelectFilter('colorSplit')}
-            data-selected={filterType === 'colorSplit'}
+          <${ControllerButton}
+            icon=${faTint}
+            onClick=${() => this.onSelectFilter('colorSplit')}
+            data-selected=${filterType === 'colorSplit'}
             data-grid-area="middle-left"
           />
-          <ControllerButton
-            icon={faPaintBrush}
-            onClick={() => this.onSelectFilter('bilateral')}
-            data-selected={filterType === 'bilateral'}
+          <${ControllerButton}
+            icon=${faPaintBrush}
+            onClick=${() => this.onSelectFilter('bilateral')}
+            data-selected=${filterType === 'bilateral'}
             data-grid-area="middle-right"
           />
-          <ControllerButton
-            icon={faSmile}
-            onClick={() => this.onSelectFilter('faceBulge')}
-            disabled={!('FaceDetector' in window)}
-            data-selected={filterType === 'faceBulge'}
+          <${ControllerButton}
+            icon=${faSmile}
+            onClick=${() => this.onSelectFilter('faceBulge')}
+            disabled=${!('FaceDetector' in window)}
+            data-selected=${filterType === 'faceBulge'}
             data-grid-area="left"
           />
-          <ControllerButton
-            icon={faPalette}
-            onClick={() => this.onSelectFilter('stylize')}
-            data-selected={filterType === 'stylize'}
+          <${ControllerButton}
+            icon=${faPalette}
+            onClick=${() => this.onSelectFilter('stylize')}
+            data-selected=${filterType === 'stylize'}
             data-grid-area="right"
           />
-        </ControllerGrid>
-      </ControllerWrapper>
-    );
+        <//>
+      <//>
+    `;
   }
 }
 

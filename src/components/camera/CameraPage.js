@@ -1,4 +1,5 @@
 import React from 'https://dev.jspm.io/react@16';
+import html from '/libraries/htm/index.js';
 import saveAs from 'https://dev.jspm.io/file-saver@2';
 
 import Layout from '/components/common/Layout.js';
@@ -157,26 +158,29 @@ class CameraPage extends React.Component {
   render() {
     const { stream, facingMode, zoom, zoomRange, barcodeResult } = this.state;
 
-    return (
-      <Layout>
-        <CameraView srcObject={stream} facingMode={facingMode} />
-        <CameraController
-          zoom={zoom}
-          zoomRange={zoomRange}
-          onChangeZoom={this.onChangeZoom}
-          onClickShutter={this.onClickShutter}
-          onChangeToGifPage={this.onChangeToGifPage}
-          onToggleFacingMode={this.onToggleFacingMode}
-          disabledToggleFacingMode={!this.canToggleFacingMode}
+    return html`
+      <${Layout}>
+        <${CameraView} srcObject=${stream} facingMode=${facingMode} />
+        <${CameraController}
+          zoom=${zoom}
+          zoomRange=${zoomRange}
+          onChangeZoom=${this.onChangeZoom}
+          onClickShutter=${this.onClickShutter}
+          onChangeToGifPage=${this.onChangeToGifPage}
+          onToggleFacingMode=${this.onToggleFacingMode}
+          disabledToggleFacingMode=${!this.canToggleFacingMode}
         />
         <audio
           preload="auto"
-          src={SHUTTER_EFFECT_PATH}
-          ref={this.shutterEffectRef}
+          src=${SHUTTER_EFFECT_PATH}
+          ref=${this.shutterEffectRef}
         />
-        <BarcodeResultPopup text={barcodeResult} onClose={this.onClosePopup} />
-      </Layout>
-    );
+        <${BarcodeResultPopup}
+          text=${barcodeResult}
+          onClose=${this.onClosePopup}
+        />
+      <//>
+    `;
   }
 }
 

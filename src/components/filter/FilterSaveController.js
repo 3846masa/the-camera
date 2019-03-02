@@ -1,4 +1,5 @@
 import React from 'https://dev.jspm.io/react@16';
+import html from '/libraries/htm/index.js';
 import {
   faTimesCircle,
   faSave,
@@ -15,17 +16,22 @@ import ControllerButton from '/components/common/ControllerButton.js';
  */
 
 /** @type {React.FC<Props>} */
-const FilterSaveController = ({ onCancel, onSave }) => (
-  <ControllerWrapper data-position="top">
-    <ControllerGrid>
-      <ControllerButton
-        icon={faTimesCircle}
-        onClick={onCancel}
-        data-grid-area="left"
-      />
-      <ControllerButton icon={faSave} onClick={onSave} data-grid-area="right" />
-    </ControllerGrid>
-  </ControllerWrapper>
-);
+const FilterSaveController = ({ onCancel, onSave }) =>
+  html`
+    <${ControllerWrapper} data-position="top">
+      <${ControllerGrid}>
+        <${ControllerButton}
+          icon=${faTimesCircle}
+          onClick=${onCancel}
+          data-grid-area="left"
+        />
+        <${ControllerButton}
+          icon=${faSave}
+          onClick=${onSave}
+          data-grid-area="right"
+        />
+      <//>
+    <//>
+  `;
 
 export default FilterSaveController;

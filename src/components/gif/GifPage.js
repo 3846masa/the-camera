@@ -1,4 +1,5 @@
 import React from 'https://dev.jspm.io/react@16';
+import html from '/libraries/htm/index.js';
 
 import Layout from '/components/common/Layout.js';
 import Loading from '/components/common/Loading.js';
@@ -112,23 +113,28 @@ class GifPage extends React.Component {
     const { stream, recTime, loading, blob } = this.state;
     const isTaken = !!blob;
 
-    return (
-      <Layout>
-        <GifVideoView videoSrc={stream} imageSrc={blob} />
-        {isTaken === false && (
-          <GifController
-            time={recTime}
-            onRecStart={this.onRecStart}
-            onRecStop={this.onRecStop}
-            onChangeToCameraPage={this.onChangeToCameraPage}
-          />
-        )}
-        {isTaken && (
-          <GifSaveController onSave={this.onSave} onCancel={this.onCancel} />
-        )}
-        <Loading loading={loading} />
-      </Layout>
-    );
+    return html`
+      <${Layout}>
+        <${GifVideoView} videoSrc=${stream} imageSrc=${blob} />
+        ${isTaken === false &&
+          html`
+            <${GifController}
+              time=${recTime}
+              onRecStart=${this.onRecStart}
+              onRecStop=${this.onRecStop}
+              onChangeToCameraPage=${this.onChangeToCameraPage}
+            />
+          `}
+        ${isTaken &&
+          html`
+            <${GifSaveController}
+              onSave=${this.onSave}
+              onCancel=${this.onCancel}
+            />
+          `}
+        <${Loading} loading=${loading} />
+      <//>
+    `;
   }
 }
 
