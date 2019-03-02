@@ -1,8 +1,7 @@
 {
   "scripts": {
-    "start": "webpack-dev-server --hot --mode development",
-    "build": "webpack --mode production",
-    "devtools": "react-devtools"
+    "start": "npx http-server -p 8080 -c 1 src",
+    "wasm-pack": "wasm-pack build src/wasm --target no-modules --release"
   },
   "devDependencies": {
     "husky": "^1.3.1",
