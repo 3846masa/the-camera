@@ -79,7 +79,7 @@ const config = {
       orientation: 'portrait',
       display: 'standalone',
       ios: {
-        'apple-mobile-web-app-capable': 'yes',
+        'apple-mobile-web-app-capable': 'no',
         'apple-mobile-web-app-status-bar-style': 'black',
       },
       icons: [
@@ -98,8 +98,30 @@ const config = {
       swDest: 'service-worker.js',
       skipWaiting: true,
       cacheId: 'the-camera',
-      exclude: [/\.map$/, /\.hot-update\./],
+      exclude: [/\.map$/, /\.hot-update\./, /\.webmanifest$/],
       runtimeCaching: [
+        {
+          urlPattern: /\.webmanifest$/,
+          handler: 'networkOnly',
+          options: {
+            plugins: [
+              {
+                fetchDidSucceed: async ({ request, response }) => {
+                  const ua = request.headers.get('User-Agent');
+                  if (/\b(iPad|iPhone)\b/.test(ua) === false) {
+                    return response;
+                  }
+                  const manifest = Object.assign(
+                    JSON.parse(await response.text()),
+                    { display: 'minimal-ui' },
+                  );
+                  const modified = new Blob([JSON.stringify(manifest)]);
+                  return new Response(modified);
+                },
+              },
+            ],
+          },
+        },
         {
           urlPattern: /./,
           handler: 'staleWhileRevalidate',
